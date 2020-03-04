@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <table class="table" id="demand-table">
+        <thead>
+        <tr>
+            <th scope="col">Demanda</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Data</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Identificador</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">sexo</th
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#" id="previous"> < </a></li>
+        <li class="page-item"><a class="page-link" href="#" id="next"> > </a></li>
+    </ul>
+{% endblock %}
+{% block js %}
+    <script>
+        $(document).ready(function () {
+
+            var cursor = 1
+
+            function getdata(page) {
+                jwt = "{{ token }}"
+                $.ajax({
+                    url: "/api/demand/?page=" + page + "&page_size=5",
+                    type: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    headers: {"Authorization": "JWT " + jwt},
+                    success: function (data) {
+                        console.log(data[0]['category']['category']);
+                        $.each(data, function (i, demand) {
+                            console.log(demand)
+                            var cols = "<tr>";
+                            cols += '<td>' + demand['demand'] + '</td>';
+                            cols += '<td>' + demand['category']['category'] + '</td>';
+                            var date = demand['date'];
+                            var dataFormatada = date.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1');
+                            cols += '<td>' + dataFormatada + '</td>';
+                            cols += '<td>' + demand['people']['name'] + '</td>';
+                            cols += '<td>' + demand['people']['identificator'] + '</td>';
+                            cols += '<td>' + demand['people']['phone'] + '</td>';
+                            cols += '<td>' + demand['people']['gender'] + '</td>';
+                            cols += '</tr>'
+                            $("#demand-table").append(cols);
+                        });
+
+                    },
+                });
+            }
+
+            getdata(cursor)
+            $("#next").click(function () {
+                cursor++;
+                $("#demand-table > tbody").html("");
+                getdata(cursor)
+            });
+            $("#previous").click(function () {
+                cursor++;
+                $("#demand-table > tbody").html("");
+                getdata(cursor)
+            });
+
+
+        })
+    </script>
+{% endblock %}

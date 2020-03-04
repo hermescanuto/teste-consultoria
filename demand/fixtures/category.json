@@ -1,0 +1,16 @@
+[
+  {
+    "model": "demand.category",
+    "pk": 1,
+    "fields": {
+      "category": "energia"
+    }
+  },
+  {
+    "model": "demand.category",
+    "pk": 2,
+    "fields": {
+      "category": "agua"
+    }
+  }
+]

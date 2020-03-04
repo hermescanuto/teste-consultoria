@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <h2>Envio de planilhas(.xlsx )</h2>
+    <br>
+    {% if erro %}
+        <div class="alert alert-danger" role="alert">
+            Arquivo não permitido somente planilhas microsoft (XLSX )
+        </div>
+    {% endif %}
+    {% if uploaded_file_url %}
+        <div class="alert alert-success" role="alert">
+            <p>Arquivo recebido com sucesso Obrigado</p>
+            <p><a href="{% url 'upload-sheet' %}">Deseja enviar outro click aqui !</a></p>
+        </div>
+    {% else %}
+        <div>
+            <form method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="file" required>
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-light">Enviar Arquivo</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
+
