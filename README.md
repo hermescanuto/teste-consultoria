@@ -37,6 +37,9 @@ export CELERY_PASS=bitnami
 export CELERY_SERVER=localhost
 ```
 
+###observação 
+USER_NAME,DB_PASS são as credenciais para acesso as demandas
+
 ###Rodar o Projeto
 
 ```
