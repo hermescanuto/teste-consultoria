@@ -12,7 +12,7 @@
 - Criar uma tabela usando bootstrap que apresente os dados
 - Criar fixture das categorias
 
-#Instalação
+##Instalação
 
 ```
 pip install -r requirements.txt
@@ -20,7 +20,7 @@ python manager.py migrate
 python manager.py loaddata category 
 ```
 
-####Criar as variaveis de ambiente, segue exemplo 
+###Criar as variaveis de ambiente, segue exemplo 
 
 ```
 export DB_USER=postgres
@@ -37,7 +37,7 @@ export CELERY_PASS=bitnami
 export CELERY_SERVER=localhost
 ```
 
-### Rodar o Projeto
+###Rodar o Projeto
 
 ```
 python manager.py runserver 0.0.0.0:8000
@@ -46,7 +46,7 @@ python manager.py runserver 0.0.0.0:8000
 
 Utilizei docker para rodar o banco de dados  e RabbitMQ
 
-#### docker-compose.yml  banco 
+####docker-compose.yml  banco 
 
 ```
 version: '2'
