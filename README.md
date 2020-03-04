@@ -17,7 +17,7 @@
 ```
 pip install -r requirements.txt
 python manager.py migrate
-python manager.py loaddata category 
+python manager.py loaddata category.json 
 ```
 
 ###Criar as variaveis de ambiente, segue exemplo 
