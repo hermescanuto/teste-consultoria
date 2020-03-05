@@ -48,6 +48,7 @@ python manager.py runserver 0.0.0.0:8000
 ###Observações
 
 Utilizei docker para rodar o banco de dados  e RabbitMQ
+Na rota diz está o upload do documento
 
 ####docker-compose.yml  banco 
 
